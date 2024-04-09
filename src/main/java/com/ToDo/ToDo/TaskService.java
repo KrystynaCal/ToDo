@@ -7,6 +7,18 @@ import java.util.List;
 @Service
 public class TaskService {
     private final TaskRepository taskRepository;
-    public TaskService(TaskRepository taskRepository) {this.taskRepository = taskRepository;}
-    public List<Task> getAllTasks() { return taskRepository.findAll(); }
+
+    public TaskService(TaskRepository taskRepository) {
+        this.taskRepository = taskRepository;
+    }
+
+    public List<Task> getAllTasks() {
+        return taskRepository.findAll();
+    }
+
+    Task addTask(Task task) {
+        return taskRepository.save(task);
+    }
 }
+
+

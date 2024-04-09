@@ -2,9 +2,7 @@ package com.ToDo.ToDo;
 
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
@@ -18,8 +16,14 @@ public class TaskController {
     }
 
     @GetMapping
-    public ResponseEntity<List<Task>> getAllTask(){
-    List<Task> tasks = taskService.getAllTasks();
-    return new ResponseEntity<>(tasks, HttpStatus.OK);
-}
+    public ResponseEntity<List<Task>> getAllTask() {
+        List<Task> tasks = taskService.getAllTasks();
+        return new ResponseEntity<>(tasks, HttpStatus.OK);
+    }
+
+    @PostMapping
+    public ResponseEntity<Task> addTask(@RequestBody Task task) {
+        Task addedTask = taskService.addTask(task);
+        return ResponseEntity.ok(addedTask);
+    }
 }
