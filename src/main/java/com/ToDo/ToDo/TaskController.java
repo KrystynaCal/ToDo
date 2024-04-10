@@ -26,4 +26,10 @@ public class TaskController {
         Task addedTask = taskService.addTask(task);
         return ResponseEntity.ok(addedTask);
     }
+
+    @DeleteMapping("/{id}")
+    public ResponseEntity<Void> deleteTaskById(@PathVariable Long id){
+        taskService.deleteTaskById(id);
+        return new ResponseEntity<>(HttpStatus.NO_CONTENT);
+    }
 }
