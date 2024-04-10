@@ -16,12 +16,21 @@ public class TaskService {
         return taskRepository.findAll();
     }
 
-    Task addTask(Task task) {
+    public Task addTask(Task task) {
         return taskRepository.save(task);
     }
 
     public void deleteTaskById(Long id) {
         taskRepository.deleteById(id);
+    }
+
+    public Task updateTask(Long id, Task task) {
+        Task taskEntity = taskRepository
+                .findById(id)
+                .orElseThrow(() -> new RuntimeException(String.format("The id: %d is wrong and this task does not exist", id)));
+        taskEntity.setName(task.getName());
+        taskEntity.setId(id);
+        return taskRepository.save(taskEntity);
     }
 }
 

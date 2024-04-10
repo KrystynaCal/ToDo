@@ -14,3 +14,7 @@ docker-compose up
  docker run --name mysql-container -e MYSQL_ROOT_PASSWORD=password -e MYSQL_DATABASE=todo_database -e TZ=UTC -p 3306:3306 -v mysql-data:/var/lib/mysql -d mysql 
  ```
 (application properties, user :root)
+
+
+### Swagger
+After running the application you can go to the: http://localhost:8080/swagger-ui.html.

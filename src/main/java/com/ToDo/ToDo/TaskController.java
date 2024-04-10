@@ -4,6 +4,7 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import java.security.Principal;
 import java.util.List;
 
 @RestController
@@ -25,6 +26,13 @@ public class TaskController {
     public ResponseEntity<Task> addTask(@RequestBody Task task) {
         Task addedTask = taskService.addTask(task);
         return ResponseEntity.ok(addedTask);
+    }
+
+    @PatchMapping("/{id}")
+    public ResponseEntity<Task> updateTaskById(@PathVariable Long id,
+                                               @RequestBody Task task){
+        Task updatedTask = taskService.updateTask(id, task);
+        return new ResponseEntity<>(updatedTask, HttpStatus.OK);
     }
 
     @DeleteMapping("/{id}")
