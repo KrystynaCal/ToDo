@@ -27,9 +27,9 @@ public class TaskService {
     public Task updateTask(Long id, Task task) {
         Task taskEntity = taskRepository
                 .findById(id)
-                .orElseThrow(() -> new RuntimeException(String.format("The id: %d is wrong and this task does not exist", id)));
+                .orElseThrow(() -> new IllegalArgumentException(String.format("The id: %d is wrong and this task does not exist", id)));
         taskEntity.setName(task.getName());
-        taskEntity.setId(id);
+        taskEntity.setId(task.getId());
         return taskRepository.save(taskEntity);
     }
 }
