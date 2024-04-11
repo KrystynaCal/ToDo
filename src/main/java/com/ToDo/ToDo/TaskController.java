@@ -25,7 +25,7 @@ public class TaskController {
     @PostMapping
     public ResponseEntity<Task> addTask(@RequestBody Task task) {
         Task addedTask = taskService.addTask(task);
-        return ResponseEntity.ok(addedTask);
+        return new ResponseEntity<>(addedTask, HttpStatus.OK);
     }
 
     @PatchMapping("/{id}")
