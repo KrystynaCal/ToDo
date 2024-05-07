@@ -1,5 +1,8 @@
-package com.ToDo.ToDo;
+package com.ToDo.ToDo.service;
 
+import com.ToDo.ToDo.entity.TaskEntity;
+import com.ToDo.ToDo.model.TaskDto;
+import com.ToDo.ToDo.repository.TaskRepository;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -12,20 +15,23 @@ public class TaskService {
         this.taskRepository = taskRepository;
     }
 
-    public List<Task> getAllTasks() {
+    public List<TaskEntity> getAllTasks() {
         return taskRepository.findAll();
     }
 
-    public Task addTask(Task task) {
-        return taskRepository.save(task);
+    public TaskDto addTask(TaskDto taskDto) {
+        TaskEntity taskEntity = new TaskEntity();
+        taskEntity.setName(taskDto.name());
+        taskRepository.save(taskEntity);
+        return taskDto;
     }
 
     public void deleteTaskById(Long id) {
         taskRepository.deleteById(id);
     }
 
-    public Task updateTask(Long id, Task task) {
-        Task taskEntity = taskRepository
+    public TaskEntity updateTask(Long id, TaskEntity task) {
+        TaskEntity taskEntity = taskRepository
                 .findById(id)
                 .orElseThrow(() -> new IllegalArgumentException(String.format("The id: %d is wrong and this task does not exist", id)));
         taskEntity.setName(task.getName());
@@ -33,5 +39,5 @@ public class TaskService {
         return taskRepository.save(taskEntity);
     }
 }
-
+///
 
