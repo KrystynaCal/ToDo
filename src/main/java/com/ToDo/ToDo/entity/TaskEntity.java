@@ -1,17 +1,28 @@
-package com.ToDo.ToDo;
+package com.ToDo.ToDo.entity;
 
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import lombok.Builder;
 
+@Builder
 @Entity
-public class Task {
+public class TaskEntity {
     @Id
-    @GeneratedValue(strategy =  GenerationType.IDENTITY)
-    private  Long id;
-    private  String name;
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Long id;
+    private String name;
 
+    public TaskEntity() {
+    }
+
+    public TaskEntity(Long id, String name) {
+        this.id = id;
+        this.name = name;
+    }
+
+    // Gettery i settery
     public Long getId() {
         return id;
     }
