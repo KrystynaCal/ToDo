@@ -1,10 +1,9 @@
-### Running the database as a container.
-## Starting a MySQL instance
+### 1. Run the database as a container.
 
-#### 1. Using Docker Compose
+
 To start the MySQL container using Docker Compose, simply run:
 ```bash
-docker-compose up
+docker-compose up -d
 ```
 
 [//]: # (#### 2. Alternatively, you can start the MySQL container via the terminal using the following command:)
@@ -23,6 +22,13 @@ docker-compose up
 [//]: # ()
 [//]: # (&#40;application properties, user :root&#41;)
 
-
-### Swagger
+### 2. Run the application
+To run application, simply run:
+```bash
+mvn clean package
+```
+```bash
+mvn spring-boot:run
+```
+### 3. Open Swagger
 After running the application you can go to the: http://localhost:8080/swagger-ui.html.
