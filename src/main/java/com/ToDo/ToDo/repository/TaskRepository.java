@@ -1,6 +1,6 @@
 package com.ToDo.ToDo.repository;
 
-import com.ToDo.ToDo.entity.TaskEntity;
+import com.ToDo.ToDo.model.TaskEntity;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 
