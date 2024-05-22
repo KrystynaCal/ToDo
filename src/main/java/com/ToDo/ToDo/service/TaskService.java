@@ -12,6 +12,7 @@ import java.util.List;
 public class TaskService {
     private final TaskRepository taskRepository;
 
+
     public TaskService(TaskRepository taskRepository) {
         this.taskRepository = taskRepository;
     }
@@ -19,13 +20,16 @@ public class TaskService {
 
     public List<TaskDto> getAllTasks() {
         List<TaskEntity> tasksEntity = taskRepository.findAll();
-        return tasksEntity.stream().map(Mapper::toDto).toList();
+        return tasksEntity.stream()
+                .map(Mapper::toDto)
+                .toList();
     }
 
 
-    public TaskDto addTask(String name) {
+    public TaskDto addTask(String title, String description) {
         TaskEntity taskEntity = new TaskEntity();
-        taskEntity.setTitle(name);
+        taskEntity.setTitle(title);
+        taskEntity.setDescription(description);
         taskRepository.save(taskEntity);
         return Mapper.toDto(taskEntity);
     }
@@ -41,6 +45,7 @@ public class TaskService {
                 .findById(id)
                 .orElseThrow(() -> new IllegalArgumentException(String.format("The id: %d is wrong and this task does not exist", id)));
         taskEntity.setTitle(task.getTitle());
+        taskEntity.setDescription(task.getDescription());
         return taskRepository.save(taskEntity);
     }
 }
