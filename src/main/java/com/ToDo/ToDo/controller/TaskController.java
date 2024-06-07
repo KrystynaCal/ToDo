@@ -21,15 +21,13 @@ public class TaskController {
 
     @GetMapping
     public ResponseEntity<List<TaskDto>> getAllTasks() {
-        List<TaskDto> tasks = taskService.getAllTasks();
-        return ResponseEntity.ok(tasks);
+        return ResponseEntity.ok(taskService.getAllTasks());
     }
 
 
-    @PostMapping()
+    @PostMapping
     public ResponseEntity<TaskDto> addTask(@RequestBody TaskDto taskDto) {
-        TaskDto addedTask = taskService.addTask(taskDto.title(), taskDto.description());
-        return ResponseEntity.ok().body(addedTask);
+        return ResponseEntity.ok(taskService.addTask(taskDto));
     }
 
 

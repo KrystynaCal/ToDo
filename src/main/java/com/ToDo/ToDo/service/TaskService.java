@@ -26,12 +26,10 @@ public class TaskService {
     }
 
 
-    public TaskDto addTask(String title, String description) {
-        TaskEntity taskEntity = new TaskEntity();
-        taskEntity.setTitle(title);
-        taskEntity.setDescription(description);
-        taskRepository.save(taskEntity);
-        return Mapper.toDto(taskEntity);
+    public TaskDto addTask(TaskDto taskDto) {
+        TaskEntity taskEntity = Mapper.toEntity(taskDto);
+        TaskEntity savedEntity = taskRepository.save(taskEntity);
+        return Mapper.toDto(savedEntity);
     }
 
 
@@ -49,5 +47,4 @@ public class TaskService {
         return taskRepository.save(taskEntity);
     }
 }
-///
 
