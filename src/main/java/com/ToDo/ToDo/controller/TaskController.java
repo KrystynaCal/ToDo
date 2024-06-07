@@ -27,7 +27,7 @@ public class TaskController {
 
     @PostMapping
     public ResponseEntity<TaskDto> addTask(@RequestBody TaskDto taskDto) {
-        return ResponseEntity.ok(taskService.addTask(taskDto));
+        return new ResponseEntity<>(taskService.addTask(taskDto), HttpStatus.CREATED);
     }
 
 
@@ -35,7 +35,7 @@ public class TaskController {
     public ResponseEntity<TaskEntity> updateTaskById(@PathVariable Long id,
                                                      @RequestBody TaskEntity task) {
         TaskEntity updatedTask = taskService.updateTask(id, task);
-        return new ResponseEntity<>(updatedTask, HttpStatus.OK);
+        return ResponseEntity.ok(updatedTask);
     }
 
 
