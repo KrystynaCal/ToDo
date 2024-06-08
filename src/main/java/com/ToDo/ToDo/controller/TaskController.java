@@ -33,15 +33,15 @@ public class TaskController {
 
 
     @PostMapping
-    public ResponseEntity<TaskDto> addTask(@RequestBody TaskDto taskDto) {
+    public ResponseEntity<TaskDtoResponse> addTask(@RequestBody TaskDto taskDto) {
         return new ResponseEntity<>(taskService.addTask(taskDto), HttpStatus.CREATED);
     }
 
 
     @PatchMapping("/{id}")
-    public ResponseEntity<TaskEntity> updateTaskById(@PathVariable Long id,
-                                                     @RequestBody TaskEntity task) {
-        TaskEntity updatedTask = taskService.updateTask(id, task);
+    public ResponseEntity<TaskDtoResponse> updateTaskById(@PathVariable Long id,
+                                                     @RequestBody TaskDto taskDto) {
+        TaskDtoResponse updatedTask = taskService.updateTask(id, taskDto);
         return ResponseEntity.ok(updatedTask);
     }
 

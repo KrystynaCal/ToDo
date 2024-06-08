@@ -24,10 +24,10 @@ public class TaskService {
     }
 
 
-    public TaskDto addTask(TaskDto taskDto) {
+    public TaskDtoResponse addTask(TaskDto taskDto) {
         TaskEntity taskEntity = Mapper.toEntity(taskDto);
         TaskEntity savedEntity = taskRepository.save(taskEntity);
-        return Mapper.toDto(savedEntity);
+        return Mapper.toDtoResponse(savedEntity);
     }
 
 
@@ -36,13 +36,14 @@ public class TaskService {
     }
 
 
-    public TaskEntity updateTask(Long id, TaskEntity task) {
+    public TaskDtoResponse updateTask(Long id, TaskDto taskDto) {
         TaskEntity taskEntity = taskRepository
                 .findById(id)
                 .orElseThrow(() -> new IllegalArgumentException(String.format("The id: %d is wrong and this task does not exist", id)));
-        taskEntity.setTitle(task.getTitle());
-        taskEntity.setDescription(task.getDescription());
-        return taskRepository.save(taskEntity);
+        taskEntity.setTitle(taskDto.title());
+        taskEntity.setDescription(taskDto.description());
+        TaskEntity savedEntity = taskRepository.save(taskEntity);
+        return Mapper.toDtoResponse(savedEntity);
     }
 }
 
