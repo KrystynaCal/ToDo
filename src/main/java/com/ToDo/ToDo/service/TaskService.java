@@ -4,18 +4,15 @@ import com.ToDo.ToDo.model.Mapper;
 import com.ToDo.ToDo.model.TaskDto;
 import com.ToDo.ToDo.model.TaskEntity;
 import com.ToDo.ToDo.repository.TaskRepository;
+import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
 
 @Service
+@RequiredArgsConstructor
 public class TaskService {
     private final TaskRepository taskRepository;
-
-
-    public TaskService(TaskRepository taskRepository) {
-        this.taskRepository = taskRepository;
-    }
 
 
     public List<TaskDto> getAllTasks() {
