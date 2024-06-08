@@ -6,6 +6,10 @@ public class Mapper {
         return new TaskDto(taskEntity.getTitle(), taskEntity.getDescription());
     }
 
+    public static TaskDtoResponse toDtoResponse(TaskEntity taskEntity){
+        return new TaskDtoResponse(taskEntity.getId(), taskEntity.getTitle(), taskEntity.getDescription());
+    }
+
     public static TaskEntity toEntity(TaskDto taskDto) {
         TaskEntity taskEntity = new TaskEntity();
         taskEntity.setTitle(taskDto.title());

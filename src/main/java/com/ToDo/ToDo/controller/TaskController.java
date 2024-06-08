@@ -1,6 +1,7 @@
 package com.ToDo.ToDo.controller;
 
 import com.ToDo.ToDo.model.TaskDto;
+import com.ToDo.ToDo.model.TaskDtoResponse;
 import com.ToDo.ToDo.model.TaskEntity;
 import com.ToDo.ToDo.service.TaskService;
 import lombok.RequiredArgsConstructor;
@@ -26,7 +27,7 @@ public class TaskController {
 
 
     @GetMapping
-    public ResponseEntity<List<TaskDto>> getAllTasks() {
+    public ResponseEntity<List<TaskDtoResponse>> getAllTasks() {
         return ResponseEntity.ok(taskService.getAllTasks());
     }
 
