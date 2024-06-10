@@ -7,7 +7,7 @@ import org.springframework.web.bind.annotation.ExceptionHandler;
 
 
 @ControllerAdvice
-public class GLobalExceptionHandler {
+public class GlobalExceptionHandler {
 
 
     @ExceptionHandler(IllegalArgumentException.class)
